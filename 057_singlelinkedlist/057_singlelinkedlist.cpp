@@ -6,6 +6,7 @@ struct Node {
     string name;
     Node* next;
 };
+
 Node* START = NULL;
 
 void addNode() {
@@ -25,28 +26,29 @@ void addNode() {
             cout << "NIM sudah ada" << endl;
             return;
         }
-    }
-    nodeBaru->next = START;
-    START = nodeBaru;
-    return;
-}
 
-Node* previous = START;
-Node* current = START;
-
-while ((current != NULL) && (nim >= current->noMhs))
-{
-    if (nim == current->noMhs)
-    {
-        cout << "NIM sudah ada" << endl;
+        nodeBaru->next = START;
+        START = nodeBaru;
         return;
-    
-    previous = current;
-    current = current->next;
     }
 
- nodeBaru->next = current;
- previous->next = nodeBaru;
+    Node* previous = START;
+    Node* current = START;
+
+    while ((current != NULL) && (nim >= current->noMhs))
+    {
+        if (nim == current->noMhs)
+        {
+            cout << "NIM sudah ada" << endl;
+            return;
+
+            previous = current;
+            current = current->next;
+        }
+
+        nodeBaru->next = current;
+        previous->next = nodeBaru;
+    }
 }
 
 bool searchNode(int nim, Node* current, Node* previous) {
@@ -154,9 +156,27 @@ int main() {
                     system("cls");
                     break;
                 }
-
-
-
-
-
-
+                int nim;
+                cout << "Masukan NIM: ";
+                cin >> nim;
+                if (deleteNode(nim)) {
+                    cout << "nim: " << nim << " berhasil dihapus" << endl;
+                    system("pause");
+                    system("cls");
+                }
+                else
+                    cout << "Data tidak ditemukan" << endl;
+                break;
+            case 3:
+                traverse();
+                break;
+            case 4:
+                searchData();
+                break;
+            case 5:
+                break;
+            default:
+                cout << "Pilihan tidak ada" << endl;
+                break;
+            }
+        }
