@@ -140,6 +140,21 @@ int main() {
             cin >> pilihan;
             switch (pilihan)
             {
+            case 1:
+                addNode();
+                cout << "Data Berhasil Ditambahkan" << endl;
+                system("pause");
+                system("cls");
+                break;
+            case 2:
+                if (listEmpty())
+                {
+                    cout << "List kosong" << endl;
+                    system("pause");
+                    system("cls");
+                    break;
+                }
+
 
 
 
